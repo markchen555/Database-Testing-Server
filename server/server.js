@@ -10,9 +10,19 @@ const parse = require('body-parser');
 
 
 // Port
-const PORT = 3005;
+const PORT = process.env.PORT || 3005;
 const app = express();
 
-app.listen(PORT, function() {
-  console.log(`It's listening to port: ${PORT}`)
-})
+app.listen(PORT, err => {
+    if (err) {
+      throw err;
+    } else {
+      console.log(`
+        It's listening to port: ${PORT}
+        ---
+        Running on ${process.env.NODE_ENV}
+        ---
+      `)
+    }
+  }
+);
