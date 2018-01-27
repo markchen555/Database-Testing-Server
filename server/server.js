@@ -19,7 +19,9 @@ console.log(constants);
 console.log('=======================================================');
 
 // Router
-
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 
 // Port(Moved to constants file)
 

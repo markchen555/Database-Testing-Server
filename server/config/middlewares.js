@@ -7,7 +7,6 @@ const isDev = process.env.NODE_ENV === 'development';
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = app => {
-  console.log('pass');
   if (isProd) {
     app.use(compression());
     app.use(helmet());
