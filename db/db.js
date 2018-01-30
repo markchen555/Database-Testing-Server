@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
-const mongoose = require('mongoose');
-const constants = require('../server/config/constants');
+// const mongoose = require('mongoose');
+// const constants = require('../server/config/constants');
+import mongoose from 'mongoose';
+import constants from '../server/config/constants';
 
 // Remove the warning with Promise
 mongoose.Promise = global.Promise;

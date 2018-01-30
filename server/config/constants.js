@@ -25,7 +25,14 @@ function envConfig(env) {
   }
 }
 
-module.exports = {
+// ES5
+// module.exports = {
+//   ...defaultConfig,
+//   ...envConfig(process.env.NODE_ENV),
+// };
+
+// ES6
+export default {
   ...defaultConfig,
   ...envConfig(process.env.NODE_ENV),
 };

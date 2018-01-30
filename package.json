@@ -2,9 +2,9 @@
   "name": "Database-Testing-Server",
   "version": "1.0.0",
   "description": "### Database Testing Server",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development nodemon server/server.js",
+    "start": "cross-env NODE_ENV=development nodemon client/static/index.bundle.js",
     "mongod": "mongod",
     "compile": "webpack --watch"
   },
