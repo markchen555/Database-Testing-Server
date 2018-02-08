@@ -36,9 +36,12 @@ Fork a copy from github or download the repository on your computer, unzip it an
 
 - [Express]()
 - [Node]()
-- [MongoDB]
-- [Mongoose]
-- [Compression]
+- [MongoDB]()
+- [Mongoose]()
+- [Compression]()
+- [Robomongo](https://robomongo.org/)
+- [Joi]()
+- [bcrypt-nodejs]()
 
 ---
 
