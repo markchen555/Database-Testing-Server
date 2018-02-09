@@ -1,9 +1,11 @@
 import mongoose, { Schema } from 'mongoose';
 import validator from 'validator';
 import { hashSync, compareSync } from 'bcrypt-nodejs';
+import jwt from 'jsonwebtoken';
 
 // Use destruction if the import file is not export default. In this case it's export const.
 import { passwordReg } from '../validation/user_validations';
+import constants from '../../server/config/constants';
 
 const UserSchema = new Schema({
   email: {
@@ -68,6 +70,23 @@ UserSchema.methods = {
   },
   _authenticateUser(password) {
     return compareSync(password, this.password);
+  },
+  createToken() {
+    return jwt.sign(
+      {
+        _id: this._id,
+      },
+      constants.JWT_SECRET,
+    );
+  },
+  // Mongo build in Method
+  toJSON() {
+    return {
+      _id: this._id,
+      userName: this.userName,
+      token: `JWT ${this.createToken()}`,
+      email: this.email,
+    };
   },
 };
 
