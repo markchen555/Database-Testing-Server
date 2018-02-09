@@ -41,7 +41,8 @@ Fork a copy from github or download the repository on your computer, unzip it an
 - [Compression]()
 - [Robomongo](https://robomongo.org/)
 - [Joi]()
-- [bcrypt-nodejs]()
+- [Bcrypt-nodejs]()
+- [Passport]()
 
 ---
 
