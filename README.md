@@ -43,6 +43,9 @@ Fork a copy from github or download the repository on your computer, unzip it an
 - [Joi]()
 - [Bcrypt-nodejs]()
 - [Passport]()
+- [Jwt](jwt.io)
+- [mongoose-unique-validator]()
+- [slug]()
 
 ---
 
