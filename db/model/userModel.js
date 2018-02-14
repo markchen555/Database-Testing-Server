@@ -84,12 +84,19 @@ UserSchema.methods = {
       constants.JWT_SECRET,
     );
   },
+  toAuthJSON() {
+    return {
+      _id: this._id,
+      userName: this.userName,
+      token: `JWT ${this.createToken()}`,
+      email: this.email,
+    };
+  },
   // Mongo build in Method
   toJSON() {
     return {
       _id: this._id,
       userName: this.userName,
-      token: `JWT ${this.createToken()}`,
       email: this.email,
     };
   },
