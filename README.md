@@ -46,6 +46,7 @@ Fork a copy from github or download the repository on your computer, unzip it an
 - [Jwt](jwt.io)
 - [mongoose-unique-validator]()
 - [slug]()
+- [http-status]()
 
 ---
 
