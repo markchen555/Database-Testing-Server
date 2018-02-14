@@ -29,3 +29,20 @@ export async function getPostslist(req, res) {
     return res.status(HTTPStatus.BAD_REQUEST).json(e);
   }
 }
+
+export async function updatePost(req, res) {
+  try {
+    const post = await Post.findById(req.params.id);
+    // Mongo build in equal method
+    if (!post.user.equals(req.user._id)) {
+      return res.sendStatus(HTTPStatus.UNAUTHORIZED);
+    }
+    Object.keys(req.body).forEach(key => {
+      post[key] = req.body[key];
+    });
+
+    return res.status(HTTPStatus.OK).json(await post.save());
+  } catch (e) {
+    return res.status(HTTPStatus.BAD_REQUEST).json(e);
+  }
+}
