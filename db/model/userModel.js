@@ -2,6 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 import validator from 'validator';
 import { hashSync, compareSync } from 'bcrypt-nodejs';
 import jwt from 'jsonwebtoken';
+import uniqueValidator from 'mongoose-unique-validator';
 
 // Use destruction if the import file is not export default. In this case it's export const.
 import { passwordReg } from '../validation/user_validations';
@@ -50,6 +51,10 @@ const UserSchema = new Schema({
       message: '{VALUE} is not a valid password!',
     },
   },
+}, { timestamps: true });
+
+UserSchema.plugin(uniqueValidator, {
+  message: '{VALUE} already taken!',
 });
 
 // MongoDB build in feature

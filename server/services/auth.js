@@ -26,7 +26,7 @@ const localStrategy = new LocalStrategy(localOpts, async (email, password, done)
 
 // JWT Strategy
 const jwtOpts = {
-  jwtFromRequest: ExtractJwt.fromHeader('Authorization'),
+  jwtFromRequest: ExtractJwt.fromHeader('authorization'),
   secretOrKey: constants.JWT_SECRET,
 };
 
