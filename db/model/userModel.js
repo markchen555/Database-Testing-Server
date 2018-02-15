@@ -4,6 +4,7 @@ import { hashSync, compareSync } from 'bcrypt-nodejs';
 import jwt from 'jsonwebtoken';
 import uniqueValidator from 'mongoose-unique-validator';
 
+import Post from './postModel';
 // Use destruction if the import file is not export default. In this case it's export const.
 import { passwordReg } from '../validation/user_validations';
 import constants from '../../server/config/constants';
@@ -51,6 +52,12 @@ const UserSchema = new Schema({
       message: '{VALUE} is not a valid password!',
     },
   },
+  favorites: {
+    posts: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Post'
+    }]
+  }
 }, { timestamps: true });
 
 UserSchema.plugin(uniqueValidator, {
@@ -100,6 +107,18 @@ UserSchema.methods = {
       email: this.email,
     };
   },
+  _favorites: {
+    async posts(postId) {
+      if (this.favorites.posts.indexOf(postId) >= 0) {
+        this.favorites.posts.remove(postId);
+        await Post.decFavoriteCount(postId);
+      } else  {
+        this.favorites.posts.push(postId);
+        await Post.incFavoriteCount(postId);
+      }
+      return this.save();
+    }
+  }
 };
 
 export default mongoose.model('User', UserSchema);
